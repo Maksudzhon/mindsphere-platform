@@ -1,0 +1,6 @@
+{
+  "name": "MindSphere Platform",
+  "description": "Next-generation multi-disciplinary learning platform featuring AI tutoring, interactive course tracks, study metrics, and community leaderboards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
