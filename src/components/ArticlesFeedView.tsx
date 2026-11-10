@@ -210,7 +210,7 @@ export const ArticlesFeedView: React.FC<ArticlesFeedViewProps> = ({
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex flex-wrap items-center gap-2 border-b border-[#18233C] pb-3">
+      <div className="flex items-center gap-2 overflow-x-auto pb-3 border-b border-[#18233C]">
         {[
           { id: 'all', label: 'All Articles' },
           { id: 'following', label: `Following (${user.followedTeachers?.length || 0})` },
@@ -438,9 +438,9 @@ export const ArticlesFeedView: React.FC<ArticlesFeedViewProps> = ({
 
       {/* FULL ARTICLE READER MODAL */}
       {selectedArticleForReading && (
-        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-[#0F162A] border border-[#24355A] rounded-3xl p-6 sm:p-9 max-w-3xl w-full shadow-2xl space-y-6 my-8 animate-fadeIn">
-            <div className="flex items-center justify-between border-b border-[#1C2C4E] pb-4">
+        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
+          <div className="bg-[#0F162A] border border-[#24355A] rounded-2xl sm:rounded-3xl p-5 sm:p-8 max-w-3xl w-full max-h-[92vh] sm:max-h-[86vh] flex flex-col shadow-2xl my-auto overflow-hidden animate-fadeIn">
+            <div className="flex items-center justify-between border-b border-[#1C2C4E] pb-3 shrink-0">
               <div className="flex items-center gap-3">
                 <img
                   src={selectedArticleForReading.authorAvatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=160&auto=format&fit=crop&q=80'}
@@ -464,7 +464,7 @@ export const ArticlesFeedView: React.FC<ArticlesFeedViewProps> = ({
               </button>
             </div>
 
-            <div className="space-y-4">
+            <div className="flex-1 overflow-y-auto space-y-4 pr-1 py-1">
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
                   {selectedArticleForReading.category}
@@ -487,7 +487,7 @@ export const ArticlesFeedView: React.FC<ArticlesFeedViewProps> = ({
               </div>
             </div>
 
-            <div className="pt-4 border-t border-[#1C2C4E] flex items-center justify-between">
+            <div className="pt-3 border-t border-[#1C2C4E] flex items-center justify-between shrink-0">
               <button
                 onClick={() => handleLike(selectedArticleForReading)}
                 className="flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-600/20 text-purple-300 border border-purple-500/30 font-semibold text-xs cursor-pointer hover:bg-purple-600 hover:text-white transition-colors"

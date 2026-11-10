@@ -45,8 +45,7 @@ export const MyCoursesView: React.FC<MyCoursesViewProps> = ({
               soundFx.playClick(800);
               onSelectCourse(course);
             }}
-            onMouseEnter={() => soundFx.playHover()}
-            className="bg-[#0F162A] border border-[#1E2942] hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-300 ease-out cursor-pointer group flex flex-col justify-between hover:-translate-y-2 shadow-lg shadow-black/20 hover:shadow-[0_20px_45px_-10px_rgba(139,92,246,0.22)] relative overflow-hidden"
+            className="bg-[#0F162A] border border-[#1E2942] hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-200 ease-out cursor-pointer group flex flex-col justify-between hover:-translate-y-1 shadow-lg shadow-black/20 hover:shadow-[0_12px_30px_-8px_rgba(139,92,246,0.2)] relative overflow-hidden"
           >
             {/* Background Discipline Watermark */}
             <div className="absolute -right-4 -bottom-4 w-32 h-32 pointer-events-none select-none">

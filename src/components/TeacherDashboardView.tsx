@@ -578,9 +578,9 @@ export const TeacherDashboardView: React.FC<TeacherDashboardViewProps> = ({
 
       {/* MODAL 1: CREATE COURSE MODAL */}
       {isCreatingCourse && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-[#0F162A] border border-[#24355A] rounded-3xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl space-y-6 my-8 animate-fadeIn">
-            <div className="flex items-center justify-between border-b border-[#1C2C4E] pb-4">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
+          <div className="bg-[#0F162A] border border-[#24355A] rounded-2xl sm:rounded-3xl p-5 sm:p-7 max-w-2xl w-full max-h-[92vh] sm:max-h-[86vh] flex flex-col shadow-2xl my-auto overflow-hidden animate-fadeIn">
+            <div className="flex items-center justify-between border-b border-[#1C2C4E] pb-3 shrink-0">
               <div className="flex items-center gap-2.5">
                 <div className="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center text-white">
                   <BookOpen className="w-5 h-5" />
@@ -598,7 +598,7 @@ export const TeacherDashboardView: React.FC<TeacherDashboardViewProps> = ({
               </button>
             </div>
 
-            <form onSubmit={handleCreateCourseSubmit} className="space-y-4">
+            <form onSubmit={handleCreateCourseSubmit} className="flex-1 overflow-y-auto space-y-4 pr-1 py-1">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold text-slate-300">Course Title</label>
@@ -723,7 +723,7 @@ export const TeacherDashboardView: React.FC<TeacherDashboardViewProps> = ({
                 ))}
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#1C2C4E]">
+              <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#1C2C4E] shrink-0">
                 <button
                   type="button"
                   onClick={() => setIsCreatingCourse(false)}
@@ -746,9 +746,9 @@ export const TeacherDashboardView: React.FC<TeacherDashboardViewProps> = ({
 
       {/* MODAL 2: WRITE BLOG ARTICLE MODAL */}
       {isPublishingArticle && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-[#0F162A] border border-[#24355A] rounded-3xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl space-y-6 my-8 animate-fadeIn">
-            <div className="flex items-center justify-between border-b border-[#1C2C4E] pb-4">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
+          <div className="bg-[#0F162A] border border-[#24355A] rounded-2xl sm:rounded-3xl p-5 sm:p-7 max-w-2xl w-full max-h-[92vh] sm:max-h-[86vh] flex flex-col shadow-2xl my-auto overflow-hidden animate-fadeIn">
+            <div className="flex items-center justify-between border-b border-[#1C2C4E] pb-3 shrink-0">
               <div className="flex items-center gap-2.5">
                 <div className="w-9 h-9 rounded-xl bg-purple-600 flex items-center justify-center text-white">
                   <FileText className="w-5 h-5" />
@@ -766,7 +766,7 @@ export const TeacherDashboardView: React.FC<TeacherDashboardViewProps> = ({
               </button>
             </div>
 
-            <form onSubmit={handlePublishArticleSubmit} className="space-y-4">
+            <form onSubmit={handlePublishArticleSubmit} className="flex-1 overflow-y-auto space-y-4 pr-1 py-1">
               <div className="space-y-1.5">
                 <label className="text-xs font-semibold text-slate-300">Article Title</label>
                 <input
@@ -843,7 +843,7 @@ export const TeacherDashboardView: React.FC<TeacherDashboardViewProps> = ({
                 />
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#1C2C4E]">
+              <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#1C2C4E] shrink-0">
                 <button
                   type="button"
                   onClick={() => setIsPublishingArticle(false)}
@@ -866,9 +866,9 @@ export const TeacherDashboardView: React.FC<TeacherDashboardViewProps> = ({
 
       {/* MODAL 3: VIEW & PARTICIPATE IN SCHOLAR COMMENTS */}
       {selectedArticleForComments && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-[#0F162A] border border-[#24355A] rounded-3xl p-6 sm:p-7 max-w-xl w-full shadow-2xl space-y-4 animate-fadeIn">
-            <div className="flex items-center justify-between border-b border-[#1C2C4E] pb-3">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
+          <div className="bg-[#0F162A] border border-[#24355A] rounded-2xl sm:rounded-3xl p-5 sm:p-7 max-w-xl w-full max-h-[92vh] sm:max-h-[85vh] flex flex-col shadow-2xl my-auto overflow-hidden animate-fadeIn">
+            <div className="flex items-center justify-between border-b border-[#1C2C4E] pb-3 shrink-0">
               <div>
                 <h3 className="text-base font-bold text-white font-display">
                   Student Discussion: {selectedArticleForComments.title}
@@ -910,7 +910,7 @@ export const TeacherDashboardView: React.FC<TeacherDashboardViewProps> = ({
             </div>
 
             {/* Reply input */}
-            <div className="pt-2 border-t border-[#1C2C4E] flex items-center gap-2">
+            <div className="pt-2 border-t border-[#1C2C4E] flex items-center gap-2 shrink-0">
               <input
                 type="text"
                 placeholder="Reply as Course Professor..."

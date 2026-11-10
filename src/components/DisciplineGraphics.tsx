@@ -507,7 +507,7 @@ export const DisciplineSynergyMatrix: React.FC<{
 
         <button
           onClick={() => onSelectPair && onSelectPair(active.pair[0], active.pair[1])}
-          className="px-4 py-2 bg-purple-600/30 hover:bg-purple-600/50 text-purple-200 text-xs font-semibold rounded-xl border border-purple-500/40 transition-all cursor-pointer whitespace-nowrap hover:scale-105 active:scale-95"
+          className="w-full md:w-auto text-center px-4 py-2 bg-purple-600/30 hover:bg-purple-600/50 text-purple-200 text-xs font-semibold rounded-xl border border-purple-500/40 transition-all cursor-pointer whitespace-nowrap"
         >
           Explore Synergy Track →
         </button>

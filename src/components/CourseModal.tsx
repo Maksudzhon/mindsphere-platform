@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+gimport React, { useState } from 'react';
 import {
   X,
   Clock,
@@ -142,10 +142,10 @@ export const CourseModal: React.FC<CourseModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-sm animate-fadeIn">
-      <div className="bg-[#0C1222] border border-[#1E2942] rounded-3xl w-full max-w-4xl max-h-[92vh] flex flex-col shadow-2xl shadow-purple-950/40 overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 md:p-6 bg-black/80 backdrop-blur-md animate-fadeIn">
+      <div className="bg-[#0C1222] border border-[#223254] rounded-2xl sm:rounded-3xl w-full max-w-5xl h-[94vh] sm:h-[88vh] flex flex-col shadow-2xl shadow-purple-950/50 overflow-hidden">
         {/* Header - Responsive with SVG emblem */}
-        <div className="p-4 sm:p-6 border-b border-[#18233C] flex items-center justify-between bg-[#0F162A]">
+        <div className="p-3.5 sm:p-5 border-b border-[#18233C] flex items-center justify-between bg-[#0F162A] shrink-0">
           <div className="flex items-center gap-3 sm:gap-4 min-w-0">
             {renderCourseGraphic('w-11 h-11 sm:w-14 sm:h-14 shrink-0')}
             <div className="min-w-0">
@@ -176,7 +176,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
         </div>
 
         {/* Tab switcher - responsive overflow */}
-        <div className="px-4 sm:px-6 py-2.5 bg-[#090E1D] border-b border-[#18233D] flex items-center justify-between gap-2 overflow-x-auto">
+        <div className="px-3.5 sm:px-6 py-2 bg-[#090E1D] border-b border-[#18233D] flex items-center justify-between gap-2 overflow-x-auto shrink-0">
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               onClick={() => {

@@ -98,7 +98,6 @@ export const PricingView: React.FC<PricingViewProps> = ({ user, onTogglePlan }) 
                 soundFx.playClick(600);
                 setBillingCycle('monthly');
               }}
-              onMouseEnter={() => soundFx.playHover()}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 billingCycle === 'monthly'
                   ? 'bg-purple-600 text-white shadow-sm'
@@ -112,7 +111,6 @@ export const PricingView: React.FC<PricingViewProps> = ({ user, onTogglePlan }) 
                 soundFx.playClick(600);
                 setBillingCycle('annual');
               }}
-              onMouseEnter={() => soundFx.playHover()}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1 ${
                 billingCycle === 'annual'
                   ? 'bg-purple-600 text-white shadow-sm'
@@ -128,16 +126,15 @@ export const PricingView: React.FC<PricingViewProps> = ({ user, onTogglePlan }) 
         </div>
       </div>
 
-      {/* Plan Cards Grid with tactile lift */}
+      {/* Plan Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
         {plans.map((p) => (
           <div
             key={p.id}
-            onMouseEnter={() => soundFx.playHover()}
-            className={`rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 ease-out relative hover:-translate-y-2 shadow-xl shadow-black/20 ${
+            className={`rounded-2xl p-6 flex flex-col justify-between transition-all duration-200 ease-out relative hover:-translate-y-1 shadow-xl shadow-black/20 ${
               p.popular
-                ? 'bg-gradient-to-b from-[#181A3A] to-[#101529] border-2 border-purple-500 hover:border-purple-400 hover:shadow-[0_20px_50px_-10px_rgba(168,85,247,0.3)]'
-                : 'bg-[#0F162A] border border-[#1E2942] hover:border-[#2C3B5E] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)]'
+                ? 'bg-gradient-to-b from-[#181A3A] to-[#101529] border-2 border-purple-500 hover:border-purple-400 hover:shadow-[0_12px_30px_-5px_rgba(168,85,247,0.25)]'
+                : 'bg-[#0F162A] border border-[#1E2942] hover:border-[#2C3B5E] hover:shadow-[0_12px_24px_-5px_rgba(0,0,0,0.4)]'
             }`}
           >
             {p.popular && (
@@ -172,7 +169,6 @@ export const PricingView: React.FC<PricingViewProps> = ({ user, onTogglePlan }) 
             <div className="pt-6">
               <button
                 onClick={() => handleAction(p.id)}
-                onMouseEnter={() => soundFx.playHover()}
                 className={`w-full py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer text-center btn-tactile ${
                   p.isCurrent
                     ? 'bg-[#18233C] text-slate-300 border border-[#233152] hover:bg-[#1E2B4A]'

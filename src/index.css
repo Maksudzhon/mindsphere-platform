@@ -156,87 +156,6 @@
   animation: beaconPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* AnyDesk interactive click ripple */
-@keyframes clickRipple {
-  0% {
-    transform: scale(0.3);
-    opacity: 0.9;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(2.4);
-    opacity: 0;
-  }
-}
-
-.animate-click-ripple {
-  animation: clickRipple 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
-}
-
-/* AnyDesk animated hand pointer tap bounce */
-@keyframes handTap {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  40% {
-    transform: translate(-3px, 5px) scale(0.92);
-  }
-  60% {
-    transform: translate(1px, -2px) scale(1.04);
-  }
-}
-
-.animate-hand-tap {
-  animation: handTap 1.6s ease-in-out infinite;
-}
-
-/* AnyDesk laser beam energy packet pulse */
-@keyframes laserEnergy {
-  0% {
-    stroke-dashoffset: 120;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-
-.animate-laser-energy {
-  stroke-dasharray: 8 16;
-  animation: laserEnergy 1.2s linear infinite;
-}
-
-/* Equalizer sound wave bars */
-@keyframes soundEq {
-  0%, 100% {
-    height: 6px;
-  }
-  50% {
-    height: 22px;
-  }
-}
-
-.animate-sound-eq-1 { animation: soundEq 0.7s ease-in-out infinite; }
-.animate-sound-eq-2 { animation: soundEq 0.9s ease-in-out infinite 0.15s; }
-.animate-sound-eq-3 { animation: soundEq 0.6s ease-in-out infinite 0.3s; }
-.animate-sound-eq-4 { animation: soundEq 1.1s ease-in-out infinite 0.1s; }
-.animate-sound-eq-5 { animation: soundEq 0.8s ease-in-out infinite 0.25s; }
-
-/* Gentle float */
-@keyframes floatGently {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-.animate-float-gently {
-  animation: floatGently 3.5s ease-in-out infinite;
-}
-
 /* Subtle glow pulses */
 @keyframes pulseSubtle {
   0%, 100% {
@@ -245,11 +164,62 @@
   }
   50% {
     opacity: 1;
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 }
 
 .animate-pulse-subtle {
   animation: pulseSubtle 3s ease-in-out infinite;
 }
+
+/* ========================================================= */
+/* SERIOUS, REFINED ACADEMIC PLATFORM ANIMATIONS             */
+/* ========================================================= */
+
+/* Calm ambient focus glow */
+@keyframes focusAmbient {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(168, 85, 247, 0.25);
+    border-color: rgba(168, 85, 247, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(168, 85, 247, 0.4);
+    border-color: rgba(168, 85, 247, 0.85);
+  }
+}
+
+.animate-focus-ambient {
+  animation: focusAmbient 3s ease-in-out infinite;
+}
+
+/* Smooth fade and subtle lift for modern dialogs */
+@keyframes smoothElevate {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-smooth-elevate {
+  animation: smoothElevate 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Steady status beacon */
+@keyframes steadyBeacon {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.animate-steady-beacon {
+  animation: steadyBeacon 2.4s ease-in-out infinite;
+}
+
 

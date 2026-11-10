@@ -218,21 +218,21 @@ Select any course focus or pick a high-yield exploration topic below to begin.`,
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-9.5rem)] lg:h-[calc(100vh-6rem)] max-w-5xl mx-auto space-y-3 sm:space-y-4">
+    <div className="flex flex-col h-[calc(100dvh-13rem)] sm:h-[calc(100vh-10rem)] lg:h-[calc(100vh-6.5rem)] max-w-5xl mx-auto space-y-2.5 sm:space-y-4">
       {/* Top Banner / Controls */}
-      <div className="p-4 rounded-2xl bg-[#101728] border border-[#1C263D] flex flex-wrap items-center justify-between gap-4 shrink-0 shadow-lg">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
-            <Bot className="w-5 h-5" />
+      <div className="p-3 sm:p-4 rounded-2xl bg-[#101728] border border-[#1C263D] flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0 shadow-lg">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+            <Bot className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
           </div>
-          <div>
-            <div className="text-sm font-bold text-white flex items-center gap-2">
-              <span>MindSphere AI Tutor</span>
-              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
+          <div className="min-w-0">
+            <div className="text-xs sm:text-sm font-bold text-white flex items-center gap-1.5 sm:gap-2 flex-wrap">
+              <span className="truncate">MindSphere AI Tutor</span>
+              <span className="text-[9px] sm:text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
                 Gemini 3.8 Flash
               </span>
             </div>
-            <div className="text-xs text-slate-400">
+            <div className="text-[11px] sm:text-xs text-slate-400 truncate">
               <span className="font-mono text-purple-400 font-semibold">
                 {dailyRequestsRemaining}
               </span>{' '}
@@ -242,13 +242,13 @@ Select any course focus or pick a high-yield exploration topic below to begin.`,
         </div>
 
         {/* Right filters: Course Select & Generate Quiz button */}
-        <div className="flex items-center gap-2.5">
-          <div className="flex items-center gap-1.5 bg-[#0C1221] px-3 py-1.5 rounded-xl border border-[#1E2942]">
-            <BookOpen className="w-3.5 h-3.5 text-slate-400" />
+        <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="flex-1 sm:flex-initial min-w-0 flex items-center gap-1.5 bg-[#0C1221] px-2.5 sm:px-3 py-1.5 rounded-xl border border-[#1E2942]">
+            <BookOpen className="w-3.5 h-3.5 text-slate-400 shrink-0" />
             <select
               value={selectedCourse}
               onChange={(e) => setSelectedCourse(e.target.value)}
-              className="bg-transparent text-xs font-semibold text-slate-200 focus:outline-hidden cursor-pointer"
+              className="bg-transparent text-xs font-semibold text-slate-200 focus:outline-hidden cursor-pointer w-full truncate"
             >
               <option value="General" className="bg-[#0F162A]">All Disciplines</option>
               {courses.map((c) => (
@@ -262,7 +262,7 @@ Select any course focus or pick a high-yield exploration topic below to begin.`,
           <button
             onClick={handleGenerateQuiz}
             disabled={isGeneratingQuiz}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 transition-all shadow-md shadow-purple-900/30 cursor-pointer disabled:opacity-50"
+            className="shrink-0 flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 transition-all shadow-md shadow-purple-900/30 cursor-pointer disabled:opacity-50 whitespace-nowrap"
           >
             <Zap className={`w-3.5 h-3.5 ${isGeneratingQuiz ? 'animate-spin' : ''}`} />
             <span>{isGeneratingQuiz ? 'Generating...' : 'Dynamic Quiz'}</span>

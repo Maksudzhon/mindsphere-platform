@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { Course, Article, UserProfile, LeaderboardUser, StudyTeam, TeacherProfile, ArticleComment } from '../types';
+import { Course, Article, UserProfile, LeaderboardUser, StudyTeam, TeacherProfile, ArticleComment, PlatformSettings } from '../types';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -19,7 +19,35 @@ export interface DatabaseSchema {
   teachers: TeacherProfile[];
   leaderboard: LeaderboardUser[];
   teams: StudyTeam[];
+  settings?: PlatformSettings;
 }
+
+export const DEFAULT_SETTINGS: PlatformSettings = {
+  defaultPlaybackSpeed: 1,
+  defaultVideoQuality: '1080p',
+  autoPlayNextVideo: true,
+  theaterModeDefault: false,
+  enableCaptionsDefault: true,
+  saveVideoWatchHistory: true,
+  defaultVolume: 0.9,
+  autoPipOnTabLeave: false,
+  showKeyboardShortcutsGuide: true,
+
+  themeAccent: 'purple',
+  tactileSoundEnabled: true,
+  reducedMotion: false,
+  highContrastMode: false,
+  compactSidebar: false,
+
+  socraticStrictness: 'standard',
+  autoQuizAfterVideo: true,
+  learningLanguage: 'en',
+
+  emailDigestFrequency: 'weekly',
+  notifyOnNewArticles: true,
+  notifyOnCourseMilestones: true,
+  profileVisibility: 'public',
+};
 
 const DEFAULT_TEACHERS: TeacherProfile[] = [
   {
@@ -688,6 +716,114 @@ class DatabaseManager {
         const content = fs.readFileSync(DB_FILE, 'utf-8');
         this.cache = JSON.parse(content);
       }
+
+      // Ensure platform settings exist
+      if (!this.cache.settings) {
+        this.cache.settings = { ...DEFAULT_SETTINGS };
+      }
+
+      // Ensure default course lessons have lecture video attachments for students to watch
+      const sampleVideoMap: Record<string, any> = {
+        'bio-l1': {
+          url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+          thumbnail: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=800&auto=format&fit=crop&q=80',
+          durationSec: 596,
+          quality: '1080p',
+          fileName: 'atp_synthase_kinetics_masterclass.mp4',
+          fileSizeMb: 42.5,
+          sourceType: 'academic_stream',
+          chapters: [
+            { timeSec: 0, title: 'Introduction to Proton Motive Force' },
+            { timeSec: 45, title: 'Electron Transfer down Complexes I-IV' },
+            { timeSec: 120, title: 'Rotor c-Ring Rotation Kinetics' },
+            { timeSec: 240, title: 'ATP Synthesis Stoichiometry' },
+          ],
+          subtitles: [
+            { timeSec: 2, text: 'Welcome to Advanced Molecular Bioenergetics.' },
+            { timeSec: 8, text: 'Today we deconstruct the electron transport chain and ATP synthase.' },
+            { timeSec: 25, text: 'Notice how electrons from NADH pump protons across the inner mitochondrial membrane.' },
+            { timeSec: 60, text: 'This steep electrochemical gradient creates a proton motive force.' },
+            { timeSec: 95, text: 'The c-ring rotor turns physically as protons pass through the stator channel.' },
+            { timeSec: 150, text: 'For every complete 360-degree rotation, three molecules of ATP are catalyzed.' },
+          ],
+        },
+        'bio-l2': {
+          url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+          thumbnail: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&auto=format&fit=crop&q=80',
+          durationSec: 653,
+          quality: '1080p',
+          fileName: 'crispr_cas9_structural_mechanisms.mp4',
+          fileSizeMb: 58.1,
+          sourceType: 'academic_stream',
+          chapters: [
+            { timeSec: 0, title: 'PAM Sequence Interrogation (5\'-NGG-3\')' },
+            { timeSec: 60, title: 'sgRNA-Target DNA R-Loop Unwinding' },
+            { timeSec: 150, title: 'HNH & RuvC Conformational Cleavage' },
+            { timeSec: 260, title: 'NHEJ vs HDR Repair Outcomes' },
+          ],
+          subtitles: [
+            { timeSec: 3, text: 'Lecture 2: Structural Kinetics of CRISPR-Cas9 Endonuclease.' },
+            { timeSec: 12, text: 'Before interrogation, Cas9 must physically dock onto the PAM motif.' },
+            { timeSec: 40, text: 'Once PAM is recognized, directional DNA unwinding initiates from the seed region.' },
+            { timeSec: 85, text: 'A 20-nucleotide RNA-DNA hybrid activates catalytic cleavage.' },
+          ],
+        },
+        'law-l1': {
+          url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+          thumbnail: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&auto=format&fit=crop&q=80',
+          durationSec: 15,
+          quality: '1080p',
+          fileName: 'marbury_madison_judicial_doctrine.mp4',
+          fileSizeMb: 15.0,
+          sourceType: 'academic_stream',
+          chapters: [
+            { timeSec: 0, title: 'The Political Crisis of 1801' },
+            { timeSec: 5, title: 'Marshall\'s Three Essential Inquiries' },
+            { timeSec: 10, title: 'Supremacy Clause & Judicial Invalidation' },
+          ],
+          subtitles: [
+            { timeSec: 1, text: 'Constitutional Jurisprudence: The Marshall Court.' },
+            { timeSec: 5, text: 'Section 13 of the Judiciary Act clashed directly with Article III.' },
+            { timeSec: 10, text: 'The judiciary possesses the inherent duty to declare contrary acts void.' },
+          ],
+        },
+        'art-l1': {
+          url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
+          thumbnail: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800&auto=format&fit=crop&q=80',
+          durationSec: 734,
+          quality: '1080p',
+          fileName: 'caravaggio_tenebrism_and_raking_light.mp4',
+          fileSizeMb: 68.4,
+          sourceType: 'academic_stream',
+          chapters: [
+            { timeSec: 0, title: 'Contrasting Sfumato and Tenebrism' },
+            { timeSec: 90, title: 'The Contarelli Chapel Innovations' },
+            { timeSec: 210, title: 'Psychological Tension in Artemisia Gentileschi' },
+          ],
+          subtitles: [
+            { timeSec: 2, text: 'Visual Theory Masterclass: The Baroque Revolution.' },
+            { timeSec: 15, text: 'Caravaggio eliminated background architecture to plunge subjects into void.' },
+            { timeSec: 45, text: 'Notice how directional light acts as an active physical protagonist.' },
+          ],
+        },
+      };
+
+      let changed = false;
+      this.cache.courses.forEach((c) => {
+        c.modules?.forEach((m) => {
+          m.lessons?.forEach((l) => {
+            if (!l.video && sampleVideoMap[l.id]) {
+              l.video = sampleVideoMap[l.id];
+              l.videoUrl = sampleVideoMap[l.id].url;
+              changed = true;
+            }
+          });
+        });
+      });
+
+      if (changed) {
+        this.saveDb(this.cache);
+      }
     } catch (err) {
       console.error('Error initializing database file:', err);
       // In-memory fallback if disk error
@@ -698,6 +834,7 @@ class DatabaseManager {
         teachers: DEFAULT_TEACHERS,
         leaderboard: INITIAL_LEADERBOARD,
         teams: INITIAL_TEAMS,
+        settings: { ...DEFAULT_SETTINGS },
       };
     }
   }
@@ -975,6 +1112,58 @@ class DatabaseManager {
 
   public getTeachers(): TeacherProfile[] {
     return this.getDb().teachers;
+  }
+
+  // Platform Settings Operations
+  public getSettings(): PlatformSettings {
+    const db = this.getDb();
+    if (!db.settings) {
+      db.settings = { ...DEFAULT_SETTINGS };
+      this.saveDb(db);
+    }
+    return db.settings;
+  }
+
+  public updateSettings(updates: Partial<PlatformSettings>): PlatformSettings {
+    const db = this.getDb();
+    db.settings = {
+      ...(db.settings || DEFAULT_SETTINGS),
+      ...updates,
+    };
+    this.saveDb(db);
+    return db.settings;
+  }
+
+  // Lesson Video Operations
+  public updateLessonVideo(
+    courseId: string,
+    moduleId: string,
+    lessonId: string,
+    video: any
+  ): { course: Course; lesson: any } | null {
+    const db = this.getDb();
+    const course = db.courses.find((c) => c.id === courseId);
+    if (!course) return null;
+
+    let targetLesson: any = null;
+    for (const mod of course.modules) {
+      if (!moduleId || mod.id === moduleId) {
+        const found = mod.lessons.find((l) => l.id === lessonId);
+        if (found) {
+          found.video = video;
+          found.videoUrl = video.url;
+          targetLesson = found;
+          break;
+        }
+      }
+    }
+
+    if (targetLesson) {
+      this.saveDb(db);
+      return { course, lesson: targetLesson };
+    }
+
+    return null;
   }
 }
 

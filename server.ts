@@ -276,6 +276,51 @@ app.post('/api/courses/:id/progress', (req, res) => {
   });
 });
 
+// Attach or update a video lecture for a specific lesson
+app.post('/api/courses/:id/lessons/:lessonId/video', (req, res) => {
+  const { id, lessonId } = req.params;
+  const { moduleId, video } = req.body;
+
+  if (!video || !video.url) {
+    return res.status(400).json({ success: false, error: 'Valid video object with url is required' });
+  }
+
+  const result = dbManager.updateLessonVideo(id, moduleId, lessonId, video);
+  if (!result) {
+    return res.status(404).json({ success: false, error: 'Course or lesson not found' });
+  }
+
+  res.json({
+    success: true,
+    data: result,
+    message: 'Lesson video updated successfully',
+  });
+});
+
+// -------------------------------------------------------------
+// PLATFORM SETTINGS ENDPOINTS
+// -------------------------------------------------------------
+app.get('/api/settings', (req, res) => {
+  res.json({
+    success: true,
+    data: dbManager.getSettings(),
+  });
+});
+
+app.put('/api/settings', (req, res) => {
+  try {
+    const updated = dbManager.updateSettings(req.body);
+    res.json({
+      success: true,
+      data: updated,
+      message: 'Platform settings updated successfully',
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message || 'Failed to update settings' });
+  }
+});
+
+
 // -------------------------------------------------------------
 // ARTICLES & BLOG POSTS (TEACHER PUBLISHING + STUDENT LIKES & COMMENTS)
 // -------------------------------------------------------------

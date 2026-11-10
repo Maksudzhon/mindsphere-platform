@@ -68,10 +68,10 @@ export const QuickAskModal: React.FC<QuickAskModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fadeIn">
-      <div className="bg-[#0D1324] border border-[#223050] rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-md animate-fadeIn">
+      <div className="bg-[#0D1324] border border-[#223050] rounded-2xl sm:rounded-3xl w-full max-w-2xl max-h-[92vh] sm:max-h-[82vh] flex flex-col shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className="p-5 border-b border-[#1A2644] flex items-center justify-between bg-[#10172B]">
+        <div className="p-4 sm:p-5 border-b border-[#1A2644] flex items-center justify-between bg-[#10172B] shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
               <Bot className="w-5 h-5" />
@@ -155,7 +155,7 @@ export const QuickAskModal: React.FC<QuickAskModalProps> = ({
         </div>
 
         {/* Input Footer */}
-        <div className="p-4 bg-[#10172B] border-t border-[#1A2644] flex flex-col gap-3">
+        <div className="p-4 bg-[#10172B] border-t border-[#1A2644] flex flex-col gap-3 shrink-0">
           <div className="flex gap-2">
             <input
               type="text"

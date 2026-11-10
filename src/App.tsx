@@ -333,6 +333,10 @@ export default function App() {
         language={language}
         userRole={user.role}
         articlesCount={articles.length}
+        onOpenTour={() => {
+          setCurrentTab('dashboard');
+          setIsTourOpen(true);
+        }}
       />
 
       {/* Main Content Area */}
@@ -347,7 +351,10 @@ export default function App() {
           onNavigateTab={(tab) => setCurrentTab(tab)}
           onTogglePlan={handleTogglePlan}
           onSignOut={handleSignOut}
-          onOpenTour={() => setIsTourOpen(true)}
+          onOpenTour={() => {
+            setCurrentTab('dashboard');
+            setIsTourOpen(true);
+          }}
         />
 
         <main className="flex-1 p-3.5 sm:p-6 md:p-8 max-w-7xl w-full mx-auto pb-24 lg:pb-8">

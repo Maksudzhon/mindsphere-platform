@@ -66,10 +66,9 @@ export const ExploreView: React.FC<ExploreViewProps> = ({
                 soundFx.playClick(620);
                 setSelectedCategory(cat);
               }}
-              onMouseEnter={() => soundFx.playHover()}
               className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
                 selectedCategory === cat
-                  ? 'bg-purple-600 text-white shadow-md shadow-purple-900/40 scale-105'
+                  ? 'bg-purple-600 text-white shadow-md shadow-purple-900/40'
                   : 'text-slate-400 hover:text-white bg-[#0C1221] hover:bg-[#16213B]'
               }`}
             >
@@ -88,8 +87,7 @@ export const ExploreView: React.FC<ExploreViewProps> = ({
               soundFx.playClick(800);
               onSelectCourse(course);
             }}
-            onMouseEnter={() => soundFx.playHover()}
-            className="bg-[#0F162A] border border-[#1E2942] rounded-2xl p-6 transition-all duration-300 ease-out flex flex-col justify-between group hover:-translate-y-2 cursor-pointer shadow-lg shadow-black/20 hover:border-purple-500/50 hover:shadow-[0_20px_45px_-12px_rgba(139,92,246,0.25)] relative overflow-hidden"
+            className="bg-[#0F162A] border border-[#1E2942] rounded-2xl p-6 transition-all duration-200 ease-out flex flex-col justify-between group hover:-translate-y-1 cursor-pointer shadow-lg shadow-black/20 hover:border-purple-500/50 hover:shadow-[0_12px_30px_-8px_rgba(139,92,246,0.2)] relative overflow-hidden"
           >
             {/* Background Discipline Watermark */}
             <div className="absolute -right-4 -bottom-4 w-32 h-32 pointer-events-none select-none">

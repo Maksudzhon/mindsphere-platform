@@ -104,9 +104,9 @@ export const ProfileEditModal: React.FC<ProfileEditModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-[#0F162A] border border-[#24355A] rounded-3xl p-6 sm:p-8 max-w-xl w-full shadow-2xl space-y-6 my-8 animate-fadeIn">
-        <div className="flex items-center justify-between border-b border-[#1C2C4E] pb-4">
+    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
+      <div className="bg-[#0F162A] border border-[#24355A] rounded-2xl sm:rounded-3xl p-5 sm:p-7 max-w-xl w-full max-h-[92vh] sm:max-h-[85vh] flex flex-col shadow-2xl my-auto overflow-hidden animate-fadeIn">
+        <div className="flex items-center justify-between border-b border-[#1C2C4E] pb-3 shrink-0">
           <div className="flex items-center gap-2.5">
             <div className="w-10 h-10 rounded-2xl bg-purple-600 flex items-center justify-center text-white">
               <User className="w-5 h-5" />
@@ -125,12 +125,12 @@ export const ProfileEditModal: React.FC<ProfileEditModalProps> = ({
         </div>
 
         {error && (
-          <div className="p-3 rounded-xl bg-rose-950/50 border border-rose-500/40 text-xs text-rose-300">
+          <div className="p-3 rounded-xl bg-rose-950/50 border border-rose-500/40 text-xs text-rose-300 shrink-0">
             {error}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto space-y-4 pr-1 py-1">
           {/* Role Switcher */}
           <div className="space-y-1.5">
             <label className="text-xs font-bold uppercase tracking-wider text-slate-300 font-mono">
@@ -257,7 +257,7 @@ export const ProfileEditModal: React.FC<ProfileEditModalProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#1C2C4E]">
+          <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#1C2C4E] shrink-0">
             <button
               type="button"
               onClick={onClose}

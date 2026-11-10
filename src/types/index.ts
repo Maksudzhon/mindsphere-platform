@@ -1,5 +1,27 @@
 export type UserRole = 'student' | 'teacher';
 
+export interface LessonVideoSubtitle {
+  timeSec: number;
+  text: string;
+}
+
+export interface LessonVideoChapter {
+  timeSec: number;
+  title: string;
+}
+
+export interface LessonVideo {
+  url: string;
+  thumbnail?: string;
+  durationSec?: number;
+  quality?: '1080p' | '720p' | '480p' | 'Auto';
+  fileName?: string;
+  fileSizeMb?: number;
+  subtitles?: LessonVideoSubtitle[];
+  chapters?: LessonVideoChapter[];
+  sourceType?: 'uploaded' | 'url' | 'academic_stream';
+}
+
 export interface Lesson {
   id: string;
   title: string;
@@ -8,6 +30,8 @@ export interface Lesson {
   content: string;
   summary: string;
   keyTakeaways: string[];
+  video?: LessonVideo;
+  videoUrl?: string;
 }
 
 export interface Module {
@@ -165,4 +189,36 @@ export interface ChatMessage {
   quizPrompt?: boolean;
   suggestedQuestions?: string[];
 }
+
+export interface PlatformSettings {
+  // Video Watching Comfort:
+  defaultPlaybackSpeed: number; // 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2
+  defaultVideoQuality: '1080p' | '720p' | '480p' | 'Auto';
+  autoPlayNextVideo: boolean;
+  theaterModeDefault: boolean;
+  enableCaptionsDefault: boolean;
+  saveVideoWatchHistory: boolean;
+  defaultVolume: number; // 0.0 - 1.0
+  autoPipOnTabLeave: boolean;
+  showKeyboardShortcutsGuide: boolean;
+
+  // Platform & Interface:
+  themeAccent: 'purple' | 'emerald' | 'blue' | 'amber' | 'rose';
+  tactileSoundEnabled: boolean;
+  reducedMotion: boolean;
+  highContrastMode: boolean;
+  compactSidebar: boolean;
+
+  // Pedagogical & AI Settings:
+  socraticStrictness: 'gentle' | 'standard' | 'rigorous';
+  autoQuizAfterVideo: boolean;
+  learningLanguage: LanguageCode;
+
+  // Notifications & Privacy:
+  emailDigestFrequency: 'daily' | 'weekly' | 'never';
+  notifyOnNewArticles: boolean;
+  notifyOnCourseMilestones: boolean;
+  profileVisibility: 'public' | 'campus_only' | 'private';
+}
+
 

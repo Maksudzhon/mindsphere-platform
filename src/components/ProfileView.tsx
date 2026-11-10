@@ -237,7 +237,6 @@ export const ProfileView: React.FC<ProfileViewProps> = ({
             return (
               <div
                 key={item.day}
-                onMouseEnter={() => soundFx.playHover()}
                 className="flex-1 flex flex-col items-center gap-2 group cursor-pointer"
               >
                 <span className="text-[10px] font-mono text-slate-400 group-hover:text-purple-300 font-semibold transition-colors">

@@ -24,9 +24,6 @@ class SoundSystem {
     if (typeof window !== 'undefined') {
       localStorage.setItem('mindsphere_sound_enabled', String(this.enabled));
     }
-    if (this.enabled) {
-      this.playChime();
-    }
     return this.enabled;
   }
 
@@ -42,7 +39,7 @@ class SoundSystem {
     }
   }
 
-  public playClick(freq = 600, duration = 0.04) {
+  public playClick(freq = 240, duration = 0.02) {
     if (!this.enabled) return;
     try {
       this.initCtx();
@@ -51,12 +48,13 @@ class SoundSystem {
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
 
-      osc.type = 'sine';
+      osc.type = 'triangle';
       osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(freq * 0.5, this.ctx.currentTime + duration);
+      osc.frequency.exponentialRampToValueAtTime(140, this.ctx.currentTime + duration);
 
-      gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
+      // Very subtle, quiet tactile micro-click (not musical)
+      gain.gain.setValueAtTime(0.012, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
 
       osc.connect(gain);
       gain.connect(this.ctx.destination);
@@ -68,61 +66,18 @@ class SoundSystem {
     }
   }
 
+  /**
+   * Hover sounds completely removed - kept as no-op for backward compatibility
+   */
   public playHover() {
-    if (!this.enabled) return;
-    try {
-      this.initCtx();
-      if (!this.ctx) return;
-
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(850, this.ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(1200, this.ctx.currentTime + 0.03);
-
-      gain.gain.setValueAtTime(0.015, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.03);
-
-      osc.connect(gain);
-      gain.connect(this.ctx.destination);
-
-      osc.start();
-      osc.stop(this.ctx.currentTime + 0.03);
-    } catch {
-      // Ignore
-    }
+    // Disabled: Childish hover sound effects removed per user request
   }
 
+  /**
+   * Musical chimes completely removed - kept as no-op
+   */
   public playChime() {
-    if (!this.enabled) return;
-    try {
-      this.initCtx();
-      if (!this.ctx) return;
-
-      [523.25, 659.25, 783.99, 1046.5].forEach((freq, idx) => {
-        if (!this.ctx) return;
-        const osc = this.ctx.createOscillator();
-        const gain = this.ctx.createGain();
-
-        const startTime = this.ctx.currentTime + idx * 0.06;
-        const duration = 0.25;
-
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(freq, startTime);
-
-        gain.gain.setValueAtTime(0.03, startTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
-
-        osc.connect(gain);
-        gain.connect(this.ctx.destination);
-
-        osc.start(startTime);
-        osc.stop(startTime + duration);
-      });
-    } catch {
-      // Ignore
-    }
+    // Disabled: Childish musical chime arpeggios removed per user request
   }
 }
 

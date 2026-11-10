@@ -152,12 +152,11 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           return (
             <div
               key={stat.id}
-              onMouseEnter={() => soundFx.playHover()}
-              className={`bg-[#0F162A] border border-[#1E2942] rounded-2xl p-4 sm:p-5 transition-all duration-300 ease-out group hover:-translate-y-1.5 cursor-pointer shadow-lg shadow-black/20 relative overflow-hidden ${stat.glowHover}`}
+              className={`bg-[#0F162A] border border-[#1E2942] rounded-2xl p-4 sm:p-5 transition-all duration-200 ease-out group hover:-translate-y-1 cursor-pointer shadow-lg shadow-black/20 relative overflow-hidden ${stat.glowHover}`}
             >
               <div className="flex items-center justify-between mb-3 sm:mb-4">
                 <div
-                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-115 group-hover:rotate-6 ${stat.badgeBg}`}
+                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center transition-colors duration-200 ${stat.badgeBg}`}
                 >
                   <Icon className={`w-4.5 h-4.5 sm:w-5 sm:h-5 ${stat.iconColor}`} />
                 </div>
@@ -200,7 +199,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
           <div className="flex items-center gap-3.5 sm:gap-4">
-            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-md shadow-purple-900/30">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center shrink-0 transition-colors duration-200 shadow-md shadow-purple-900/30">
               <Bot className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" />
             </div>
             <div>
@@ -223,8 +222,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               soundFx.playClick(720);
               onOpenQuickAsk();
             }}
-            onMouseEnter={() => soundFx.playHover()}
-            className="w-full sm:w-auto px-5 sm:px-6 py-2.5 bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-xs sm:text-sm font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-purple-600/30 hover:shadow-purple-600/50 hover:scale-[1.03] active:scale-95 shrink-0 cursor-pointer text-center flex items-center justify-center gap-2 btn-tactile"
+            className="w-full sm:w-auto px-5 sm:px-6 py-2.5 bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-xs sm:text-sm font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-purple-600/30 hover:shadow-purple-600/50 shrink-0 cursor-pointer text-center flex items-center justify-center gap-2 btn-tactile"
           >
             <Sparkles className="w-4 h-4" />
             <span>{t.askAiTutor}</span>
@@ -244,8 +242,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                 soundFx.playClick(650);
                 onOpenQuickAsk();
               }}
-              onMouseEnter={() => soundFx.playHover()}
-              className="text-[11px] sm:text-xs px-2.5 py-1 rounded-lg bg-[#0F1426] hover:bg-purple-950/60 text-slate-300 hover:text-white border border-[#242F50] hover:border-purple-400/40 transition-all duration-150 cursor-pointer hover:scale-105 active:scale-95"
+              className="text-[11px] sm:text-xs px-2.5 py-1 rounded-lg bg-[#0F1426] hover:bg-purple-950/60 text-slate-300 hover:text-white border border-[#242F50] hover:border-purple-400/40 transition-colors duration-150 cursor-pointer"
             >
               {spark.label}
             </button>
@@ -256,7 +253,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       {/* Polymath Learning Streak Badge Strip */}
       <div className="bg-[#0E1526] border border-[#1A253E] hover:border-orange-500/40 hover:shadow-[0_10px_30px_-5px_rgba(249,115,22,0.15)] rounded-xl px-4 sm:px-5 py-3.5 flex flex-wrap items-center justify-between gap-3 text-xs transition-all duration-200 group">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-orange-400 group-hover:scale-115 group-hover:rotate-6 transition-transform">
+          <div className="w-8 h-8 rounded-lg bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-orange-400">
             <Flame className="w-4.5 h-4.5" />
           </div>
           <div>
@@ -274,8 +271,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             soundFx.playClick();
             onNavigateTab('leaderboard');
           }}
-          onMouseEnter={() => soundFx.playHover()}
-          className="text-purple-400 hover:text-purple-300 font-semibold flex items-center gap-1 cursor-pointer group-hover:translate-x-1.5 transition-transform"
+          className="text-purple-400 hover:text-purple-300 font-semibold flex items-center gap-1 cursor-pointer transition-colors"
         >
           <span>{t.viewRank} #4</span>
           <ArrowRight className="w-3.5 h-3.5" />
@@ -306,8 +302,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               soundFx.playClick();
               onNavigateTab('my-courses');
             }}
-            onMouseEnter={() => soundFx.playHover()}
-            className="text-xs font-semibold text-slate-400 hover:text-purple-400 transition-colors flex items-center gap-1 cursor-pointer hover:translate-x-1 transition-transform"
+            className="text-xs font-semibold text-slate-400 hover:text-purple-400 transition-colors flex items-center gap-1 cursor-pointer"
           >
             <span>{t.viewAll}</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -326,8 +321,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                   soundFx.playClick(800);
                   onSelectCourse(course);
                 }}
-                onMouseEnter={() => soundFx.playHover()}
-                className={`bg-[#0F162A] border border-[#1E2942] rounded-2xl p-5 sm:p-5.5 transition-all duration-300 ease-out cursor-pointer group flex flex-col justify-between hover:-translate-y-2 shadow-md shadow-black/30 relative overflow-hidden ${glowClass}`}
+                className={`bg-[#0F162A] border border-[#1E2942] rounded-2xl p-5 sm:p-5.5 transition-all duration-200 ease-out cursor-pointer group flex flex-col justify-between hover:-translate-y-1 shadow-md shadow-black/30 relative overflow-hidden ${glowClass}`}
               >
                 {/* Architectural Discipline Watermark in Card Background */}
                 <div className="absolute -right-3 -bottom-3 w-28 h-28 pointer-events-none select-none">
